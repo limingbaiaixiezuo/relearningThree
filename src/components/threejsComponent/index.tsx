@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { useGrid } from '../../config/grid';
 
+
+// ??/
 const FirstThreeComponent: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { columnWidth: WIDTH , rowHeight: HEIGHT } = useGrid();
