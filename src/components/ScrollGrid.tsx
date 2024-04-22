@@ -1,11 +1,11 @@
 import React from 'react';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
 import RectangularBox from './RectangularBox';
-import FirstThreeComponent from './threejsComponent';
+import ThreeComponent from './threejsComponent';
 
 const render = (rowIndex: number, columnIndex: number) => {
-    if (rowIndex === 0 && columnIndex === 0) {
-        return <FirstThreeComponent />;
+    if (rowIndex < 1 && columnIndex < 1) {
+        return <ThreeComponent id={`three-${rowIndex}-${columnIndex}`}/>;
     }
     
     return <RectangularBox rowIndex={rowIndex} columnIndex={columnIndex} />;
