@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
-// import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser';
 // import { babel } from '@rollup/plugin-babel'
 // import legacy from '@vitejs/plugin-legacy'
 
@@ -23,9 +23,14 @@ export default defineConfig({
   plugins: [
     react(),
     visualizer({
-      filename: 'bundle-analysis.html',
-      open: true,
+      filename: 'stats.html', // 指定输出的 HTML 文件名
+      open: true, // 打包后自动打开浏览器显示可视化界面
+      gzipSize: true, // 统计 gzip 压缩后的大小
+      brotliSize: true, // 统计 brotli 压缩后的大小
     }),
+    terser(),//@rollup/plugin-terser 插件,并将 terser() 添加到 plugins 数组中。这将在构建过程中自动压缩和优化生成的代码。
+    //请确保你已经安装了 rollup 作为开发依赖,并且在 package.json 文件中配置了相应的构建脚本。
+    //运行 pnpm run build 命令来执行 Rollup 构建,使用 @rollup/plugin-terser 插件压缩和优化代码。
   ],
   build: {
     sourcemap: true,

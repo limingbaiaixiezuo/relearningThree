@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGrid } from '../config/grid';
 
+
 interface RectangularBoxProps {
     rowIndex: number;
     columnIndex: number;

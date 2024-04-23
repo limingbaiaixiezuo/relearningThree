@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { useGrid } from '../../config/grid';
 import { initStats, initScene, initCamera, 
   initRenderer, createShape, initControls, 
-  initAxes, animate, cleanup } from './utils';
+  initAxes, startRender, cleanup } from './utils';
 
 const ThreeComponent: React.FC<{ id: string }> = ({ id }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -23,7 +23,7 @@ const ThreeComponent: React.FC<{ id: string }> = ({ id }) => {
 
     scene.add(shape);
 
-    animate(scene, camera, renderer, stats, shape, controls);
+    startRender(scene, camera, renderer, stats, shape, controls);
 
     return () => {
       cleanup(scene, controls, renderer);

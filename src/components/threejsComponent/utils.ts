@@ -110,19 +110,22 @@ export const initAxes = (scene: THREE.Scene, arrowLength:number = 3) => {
 };
 
   // 渲染循环
-export const animate = (
+export const startRender = (
     scene: THREE.Scene,
     camera: THREE.Camera,
     renderer: THREE.WebGLRenderer,
     stats: Stats,
-    shape: THREE.Mesh,
-    controls: OrbitControls
+    shape: THREE.Mesh | THREE.Points,
+    controls: OrbitControls,
+    isAnimate: boolean = true
   ) => {
     const animateLoop = () => {
       requestAnimationFrame(animateLoop);
       stats.begin();
-      shape.rotation.x += 0.01;
-      shape.rotation.y += 0.01;
+      if (isAnimate) {
+        shape.rotation.x += 0.01;
+        shape.rotation.y += 0.01;
+      }
       controls.update();
       renderer.render(scene, camera);
       stats.end();

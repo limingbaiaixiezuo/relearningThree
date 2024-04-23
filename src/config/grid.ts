@@ -4,8 +4,8 @@ export function useGrid() {
   const [grid, setGrid] = useState({
     columnCount: 100,
     rowCount: 100,
-    columnWidth: 600,
-    rowHeight: 360,
+    columnWidth: 800,
+    rowHeight: 560,
     padding: 10,
     width: window.innerWidth - 10 -10,
     height: window.innerHeight - 10 - 10,
@@ -15,8 +15,8 @@ export function useGrid() {
     const handleResize = () => {
       setGrid(prevGrid => ({
         ...prevGrid,
-        width: window.innerWidth - prevGrid.padding * 2,
-        height: window.innerHeight - prevGrid.padding * 2,
+        width: Number(window.innerWidth) - prevGrid.padding * 2,
+        height: Number(window.innerHeight) - prevGrid.padding * 2,
       }));
     };
 
