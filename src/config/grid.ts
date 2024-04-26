@@ -4,8 +4,8 @@ export function useGrid() {
   const [grid, setGrid] = useState({
     columnCount: 100,
     rowCount: 100,
-    columnWidth: 800,
-    rowHeight: 560,
+    columnWidth: 400,
+    rowHeight: 260,
     padding: 10,
     width: window.innerWidth - 10 -10,
     height: window.innerHeight - 10 - 10,

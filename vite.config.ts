@@ -5,6 +5,8 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import terser from '@rollup/plugin-terser';
 // import { babel } from '@rollup/plugin-babel'
 // import legacy from '@vitejs/plugin-legacy'
+import reactRefresh from '@vitejs/plugin-react-refresh';
+// import styleImport from 'vite-plugin-style-import';
 
 export default defineConfig({
   base: './',
@@ -22,6 +24,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    reactRefresh(),
     visualizer({
       filename: 'stats.html', // 指定输出的 HTML 文件名
       open: true, // 打包后自动打开浏览器显示可视化界面

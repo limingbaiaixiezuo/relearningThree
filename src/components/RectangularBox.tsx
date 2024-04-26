@@ -12,8 +12,8 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({ rowIndex, columnIndex }
 
     return (
         <div style={{
-            width: columnWidth,
-            height: rowHeight,
+            width: columnWidth - padding * 4,
+            height: rowHeight - padding * 4,
             border: '4px solid yellow',
             display: 'flex',
             justifyContent: 'center',

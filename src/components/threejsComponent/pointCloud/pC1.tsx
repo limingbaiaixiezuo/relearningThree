@@ -18,7 +18,7 @@ const ThreePointCloud: React.FC<{ id: string }> = ({ id }) => {
   const pointCloudData = mock.generatePointCloudData();
 
   // 将点云数据保存到文件或进行其他处理
-  console.log(pointCloudData);
+  // console.log(pointCloudData);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -33,7 +33,7 @@ const ThreePointCloud: React.FC<{ id: string }> = ({ id }) => {
     // scene.add(shape);
     parsePointCloudData(pointCloudData, 'PLY')
     .then((parsedPoints: THREE.Vector3[]) => {
-      console.log('Parsed points from string 222:', parsedPoints);
+      // console.log('Parsed points from string 222:', parsedPoints);
       const pointCloud = createPointCloud(parsedPoints);
       scene.add(pointCloud);
 

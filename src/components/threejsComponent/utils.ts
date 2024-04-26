@@ -30,7 +30,7 @@ export const initCamera = (width: number, height: number) => {
   
   // 初始化渲染器
 export const initRenderer = (canvas: HTMLCanvasElement, width: number, height: number) => {
-    const renderer = new THREE.WebGLRenderer({ canvas });
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias:true});
     renderer.setSize(width, height);
     return renderer;
 };
@@ -41,6 +41,13 @@ export const createShape = () => {
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
     const cube = new THREE.Mesh(geometry, material);
     return cube;
+};
+
+export const createGrid = () => {
+    const size = 10;
+    const divisions = 10;
+    const gridHelper = new THREE.GridHelper(size, divisions);
+    return gridHelper;
 };
   
   // 初始化轨道控制器
@@ -110,6 +117,8 @@ export const initAxes = (scene: THREE.Scene, arrowLength:number = 3) => {
 };
 
   // 渲染循环
+// const clock = new THREE.Clock();
+
 export const startRender = (
     scene: THREE.Scene,
     camera: THREE.Camera,
@@ -121,10 +130,11 @@ export const startRender = (
   ) => {
     const animateLoop = () => {
       requestAnimationFrame(animateLoop);
+      // const elapsedTime = clock.getElapsedTime(); // 返回已经过去的时间, 以秒为单位
       stats.begin();
       if (isAnimate) {
-        shape.rotation.x += 0.01;
-        shape.rotation.y += 0.01;
+        shape.rotation.x +=0.01;
+        shape.rotation.y +=0.01;
       }
       controls.update();
       renderer.render(scene, camera);

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 // import * as THREE from 'three';
 import { useGrid } from '../../config/grid';
 import { initStats, initScene, initCamera, 
-  initRenderer, createShape, initControls, 
+  initRenderer, createGrid, initControls, 
   initAxes, startRender, cleanup } from './utils';
 
 const ThreeComponent: React.FC<{ id: string }> = ({ id }) => {
@@ -18,12 +18,13 @@ const ThreeComponent: React.FC<{ id: string }> = ({ id }) => {
     initAxes(scene);
     const controls = initControls(camera, canvas);
 
-    const shape = createShape();
+    // const shape = createShape();
 
-
-    scene.add(shape);
-
-    startRender(scene, camera, renderer, stats, shape, controls);
+    // scene.add(shape);
+    const grid = createGrid();
+    scene.add(grid);
+    //@ts-ignore
+    startRender(scene, camera, renderer, stats, grid, controls);
 
     return () => {
       cleanup(scene, controls, renderer);
